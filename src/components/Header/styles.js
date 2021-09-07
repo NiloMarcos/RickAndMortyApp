@@ -4,7 +4,8 @@ export const ContainerAll = styled.View`
   justify-content: center;
   align-items: center;
   height: 150px;
-  border: 1px solid #c4c4c4;
+  background-color: #ade8f4;
+  border-bottom-width: 1px;
 `;
 
 export const Logo = styled.Image`
