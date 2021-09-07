@@ -39,3 +39,5 @@ export const ButtonFilter = styled.TouchableOpacity`
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 `;
+
+export const ContainerPersonagens = styled.View``;
