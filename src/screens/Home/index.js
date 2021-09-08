@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, Text, View, ScrollView, Image } from "react-native";
+import { Text, Image } from "react-native";
 import Header from "../../components/Header";
 import { Ionicons } from "@expo/vector-icons";
 import api from "../../services/api";
@@ -10,8 +10,9 @@ import {
   Input,
   ButtonFilter,
   ContainerPersonagens,
-  ContainerPersonagensInfo,
-  ListChars
+  ListChars,
+  ContainerTextApi,
+  TextApi
 } from "./styles";
 
 export default function Home({navigator}) {
@@ -48,11 +49,11 @@ export default function Home({navigator}) {
         renderItem={({item}) => (
           <ContainerPersonagens onPress={() => {}}>
             <Image source={{ uri: item.image }} style={{ width: 100, height: 100 }} />
-            <Text>{item.name}</Text>
-            <Text>{item.status}</Text>
-            <Text>{item.species}</Text>
-            <Text>{item.gender}</Text>
-            <Text>{item.origin.name}</Text>
+            <ContainerTextApi>
+              <TextApi>{item.name}</TextApi>
+              <TextApi>{item.status}</TextApi>
+              <TextApi>{item.species}</TextApi>
+            </ContainerTextApi>
           </ContainerPersonagens>
         )}
       />

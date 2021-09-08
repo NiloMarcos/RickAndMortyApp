@@ -29,7 +29,7 @@ export const Input = styled.TextInput`
   font-family: Poppins_400Regular;
 `;
 
-export const ButtonFilter = styled.TouchableOpacity`
+export const ButtonFilter = styled.View`
   background-color: #dfe7fd;
   width: 40px;
   height: 50px;
@@ -41,11 +41,22 @@ export const ButtonFilter = styled.TouchableOpacity`
 `;
 
 export const ContainerPersonagens = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-left: 10px;
+`;
+
+export const ListChars = styled.FlatList`
 
 `;
 
-export const ContainerPersonagensInfo = styled.View`
-
+export const ContainerTextApi = styled.View`
+  margin-left: 15px;
+  justify-content: center;
 `;
 
-export const ListChars = styled.FlatList``;
+export const TextApi = styled.Text`
+  font-size: 14px;
+  font-family: Poppins_400Regular;
+`;
