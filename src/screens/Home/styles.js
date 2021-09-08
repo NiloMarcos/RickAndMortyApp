@@ -40,4 +40,12 @@ export const ButtonFilter = styled.TouchableOpacity`
   border-bottom-right-radius: 8px;
 `;
 
-export const ContainerPersonagens = styled.View``;
+export const ContainerPersonagens = styled.View`
+
+`;
+
+export const ContainerPersonagensInfo = styled.View`
+
+`;
+
+export const ListChars = styled.FlatList``;
