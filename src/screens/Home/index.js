@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {ActivityIndicator} from 'react-native';
 import Header from '../../components/Header';
 import { Ionicons  } from '@expo/vector-icons';
 import api from '../../services/api'
@@ -6,12 +7,20 @@ import {ContainerAll, Title, ContainerSearch, Input, ButtonFilter,ContainerPerso
 
 
 export default function Home(){
-  
-  async function handleSearch(){
-    const response = await api.get('/character');
-    console.log(response.data); 
-  }
-  
+  const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function handleCharacters(){
+      const response = await api.get('/character');
+      console.log(response.data);
+
+      setCharacters(response.data);
+    }
+    handleCharacters();
+  },[]);
+
+
   return (
     <ContainerAll>
       <Header />
@@ -19,7 +28,7 @@ export default function Home(){
 
       <ContainerSearch>
         <Input placeholder="Filtre por personagem" />
-        <ButtonFilter onPress={() => handleSearch()}>
+        <ButtonFilter onPress={() => {}}>
           <Ionicons  name="flask" size={25} />
         </ButtonFilter>
       </ContainerSearch>
