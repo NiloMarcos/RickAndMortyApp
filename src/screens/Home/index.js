@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, Image } from "react-native";
+import { Image } from "react-native";
 import Header from "../../components/Header";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import api from "../../services/api";
 import {
   ContainerAll,
-  Title,
   ContainerSearch,
   Input,
   ButtonFilter,
@@ -15,14 +14,14 @@ import {
   TextApi
 } from "./styles";
 
-export default function Home({navigator}) {
-  const [characters, setCharacters] = useState([]);
+export default function Home({navigation}) {
+  const [ characters, setCharacters ] = useState([]);
 
   useEffect(() => {
     async function handleCharacters() {
-      const response = await api.get("/character");
-      console.log(response.data.results);
-
+      const response = await api.get(`/character`);
+      // console.log(response.data.results);
+  
       setCharacters(response.data.results);
     }
 
@@ -32,7 +31,6 @@ export default function Home({navigator}) {
   return (
     <ContainerAll>
       <Header />
-      <Title>Bem vindo(a) ao Rick And Morty App</Title>
 
       <ContainerSearch>
         <Input placeholder="Filtre por personagem" />
@@ -40,14 +38,16 @@ export default function Home({navigator}) {
           <Ionicons name="flask" size={25} />
         </ButtonFilter>
       </ContainerSearch>
+      
+      {/* <Ionicons name="alert-circle-outline" size={25} /> */}
 
       <ListChars 
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         data={characters}
-        keyExtractor={characters => characters.id.toString()}
+        keyExtractor={characters => characters.name}
         renderItem={({item}) => (
-          <ContainerPersonagens onPress={() => {}}>
+          <ContainerPersonagens onPress={() => navigation.navigate('Detalhes')}>
             <Image source={{ uri: item.image }} style={{ width: 100, height: 100 }} />
             <ContainerTextApi>
               <TextApi>{item.name}</TextApi>
