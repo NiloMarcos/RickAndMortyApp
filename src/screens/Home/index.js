@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "react-native";
 import Header from "../../components/Header";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import api from "../../services/api";
 import {
   ContainerAll,
@@ -13,6 +13,8 @@ import {
   ContainerTextApi,
   TextApi
 } from "./styles";
+
+// id.toString()
 
 export default function Home({navigation}) {
   const [ characters, setCharacters ] = useState([]);
@@ -38,16 +40,14 @@ export default function Home({navigation}) {
           <Ionicons name="flask" size={25} />
         </ButtonFilter>
       </ContainerSearch>
-      
-      {/* <Ionicons name="alert-circle-outline" size={25} /> */}
 
       <ListChars 
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         data={characters}
-        keyExtractor={characters => characters.name}
-        renderItem={({item}) => (
-          <ContainerPersonagens onPress={() => navigation.navigate('Detalhes')}>
+        keyExtractor={ characters => characters.name }
+        renderItem={({ item }) => (
+          <ContainerPersonagens onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             <Image source={{ uri: item.image }} style={{ width: 100, height: 100 }} />
             <ContainerTextApi>
               <TextApi>{item.name}</TextApi>

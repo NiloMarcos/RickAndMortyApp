@@ -47,8 +47,8 @@ export const ContainerPersonagens = styled.TouchableOpacity`
   margin-left: 10px;
   margin-bottom: 5px;
   background-color: #1d3557;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  width: 100%;
+  height: 100%;
 `;
 
 export const ContainerNavigation = styled.View`
@@ -74,5 +74,3 @@ export const TextApi = styled.Text`
   font-family: Poppins_400Regular;
   color: #FFFFFF;
 `;
-
-// id.toString()

@@ -1,10 +1,27 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import {View, Text, Alert} from 'react-native';
 
-export default function Details(){
+import api from '../../services/api';
+
+export default function Details({ navigation, route}){
+  const { id } = route.params;
+  
+  const [ characters, setCharacters ] = useState(undefined);
+
+  useEffect(() => {
+    async function loadCharacters() {
+      const response = await api.get(`/character/${id}`);
+      console.log(response.data);
+      setCharacters(response.data);
+    }
+
+    loadCharacters();
+    
+  }, []);
+
   return (
-    <View>
-      <Text>Its a home Details</Text>
+    <View style={{marginTop: 15}}>
+      <Text></Text>
     </View>
   );
 }
