@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Ionicons } from "@expo/vector-icons";;
 import api from '../../services/api';
 
-import {ContainerAll, ContainerBack, ContainerInfo, Photo, Name, Gender, Status, Species} from './styles';
+import {ContainerAll, ContainerBack, BackButton, Title, ContainerInfo, Photo, Name, Gender, Status, Species} from './styles';
 
 export default function Details({ navigation, route}){
   const { id } = route.params;
@@ -23,7 +23,10 @@ export default function Details({ navigation, route}){
   return (
     <ContainerAll>
       <ContainerBack>
-        <Ionicons name="arrow-back-outline" size={25} />
+        <BackButton onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="arrow-back-outline" size={30} />
+        </BackButton>
+        <Title>Caracteristicas dos personagens</Title>
       </ContainerBack>
       <ContainerInfo>
         <Photo source={{ uri: characters.image }} />

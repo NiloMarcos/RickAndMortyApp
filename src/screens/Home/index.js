@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image } from "react-native";
+import { Image, Text, View, ScrollView } from "react-native";
 import Header from "../../components/Header";
 import { Ionicons } from "@expo/vector-icons";
 import api from "../../services/api";
@@ -18,6 +18,7 @@ import {
 
 export default function Home({navigation}) {
   const [ characters, setCharacters ] = useState([]);
+  const [ filter, setFilter ] = useState("");
 
   useEffect(() => {
     async function handleCharacters() {
@@ -30,12 +31,16 @@ export default function Home({navigation}) {
     handleCharacters();
   }, []);
 
+  const filterCharacter = characters.filter((character) => {
+    return character.name.toLowerCase().includes(filter.toLowerCase());
+  });
+
   return (
     <ContainerAll>
       <Header />
 
       <ContainerSearch>
-        <Input placeholder="Filtre por personagem" />
+        <Input placeholder="Filtre por personagem" value={filter} onChangeText={(text) => setFilter(text)} />
         <ButtonFilter onPress={() => {}}>
           <Ionicons name="flask" size={25} />
         </ButtonFilter>
@@ -44,7 +49,7 @@ export default function Home({navigation}) {
       <ListChars 
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        data={characters}
+        data={filterCharacter}
         keyExtractor={ characters => characters.name }
         renderItem={({ item }) => (
           <ContainerPersonagens onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
