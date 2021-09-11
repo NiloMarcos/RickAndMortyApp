@@ -2,20 +2,14 @@ import styled from 'styled-components/native';
 
 export const ContainerAll = styled.View`
   flex: 1;
-`;
-
-export const Title = styled.Text`
-  text-align: center;
-  margin-top: 15px;
-  font-size: 16px;
-  font-family: Poppins_400Regular_Italic;
+  background-color: #343a40;
 `;
 
 export const ContainerSearch = styled.View`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin-top: 10px;
+  margin-top: 35px;
 `;
 
 export const Input = styled.TextInput`
@@ -26,7 +20,7 @@ export const Input = styled.TextInput`
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
   font-size: 14px;
-  font-family: Poppins_400Regular;
+  font-family: 'Poppins_400Regular';
 `;
 
 export const ButtonFilter = styled.TouchableOpacity`
@@ -59,11 +53,7 @@ export const ContainerNavigation = styled.View`
   margin-bottom: 5px;
 `;
 
-export const BackScreen = styled.TouchableOpacity``;
-export const NextScreen = styled.TouchableOpacity``;
-
 export const ListChars = styled.FlatList`
-  flex: 1;
   margin-right: 10px;
 `;
 
@@ -74,7 +64,7 @@ export const ContainerTextApi = styled.View`
 
 export const TextApi = styled.Text`
   font-size: 14px;
-  font-family: Poppins_400Regular;
+  font-family: 'Poppins_400Regular';
   color: #FFFFFF;
 `;
 
@@ -82,4 +72,3 @@ export const Photo = styled.Image`
   width: 100px; 
   height: 100px;
 `;
-

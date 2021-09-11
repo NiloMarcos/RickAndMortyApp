@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Header from "../../components/Header";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import React, { useState, useEffect } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import api from "../../services/api";
 import {
   ContainerAll,
@@ -12,23 +11,24 @@ import {
   ContainerTextApi,
   TextApi,
   Photo,
-  ContainerNavigation,
-  BackScreen,
-  NextScreen
 } from "./styles";
 
 export default function Home({ navigation }) {
   const [characters, setCharacters] = useState([]);
   const [filter, setFilter] = useState("");
-  const [info, setInfo] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const parPage = 5;
 
   useEffect(() => {
-    async function handleCharacters() {
-      const response = await api.get(`/character`);
-      setCharacters(response.data.results);
-    }
     handleCharacters();
   }, []);
+
+  async function handleCharacters() {
+    const response = await api.get(`/character/?page=${page}`);
+    setCharacters(response.data.results);
+    setPage(page + 1);
+  }
 
   // const filterCharacter = characters.filter((character) => {
   //   return character.name.toLowerCase().includes(filter.toLowerCase());
@@ -36,15 +36,13 @@ export default function Home({ navigation }) {
 
   return (
     <ContainerAll>
-      <Header />
-
       <ContainerSearch>
         <Input
           placeholder="Filtre por personagem"
           value={filter}
           onChangeText={(text) => setFilter(text)}
         />
-        <ButtonFilter onPress={() => { }}>
+        <ButtonFilter onPress={() => {}}>
           <Ionicons name="flask" size={25} />
         </ButtonFilter>
       </ContainerSearch>
@@ -55,7 +53,9 @@ export default function Home({ navigation }) {
         data={characters}
         keyExtractor={(characters) => characters.id.toString()}
         renderItem={({ item }) => (
-          <ContainerPersonagens onPress={() => navigation.navigate("Detalhes", { id: item.id })}>
+          <ContainerPersonagens
+            onPress={() => navigation.navigate("Detalhes", { id: item.id })}
+          >
             <Photo source={{ uri: item.image }} />
             <ContainerTextApi>
               <TextApi>Nome: {item.name}</TextApi>
@@ -64,6 +64,8 @@ export default function Home({ navigation }) {
             </ContainerTextApi>
           </ContainerPersonagens>
         )}
+        onEndReached={handleCharacters}
+        onEndReachedThreshold={0.1}
       />
     </ContainerAll>
   );
