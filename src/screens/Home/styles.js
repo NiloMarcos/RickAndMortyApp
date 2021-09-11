@@ -21,6 +21,7 @@ export const Input = styled.TextInput`
   border-top-left-radius: 8px;
   font-size: 14px;
   font-family: 'Poppins_400Regular';
+  margin-bottom: 5px;
 `;
 
 export const ButtonFilter = styled.TouchableOpacity`
@@ -32,8 +33,8 @@ export const ButtonFilter = styled.TouchableOpacity`
   margin-left: 2px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  margin-bottom: 5px;
 `;
-
 export const ContainerPersonagens = styled.TouchableOpacity`
   flex: 1;
   flex-direction: row;
@@ -70,5 +71,5 @@ export const TextApi = styled.Text`
 
 export const Photo = styled.Image`
   width: 100px; 
-  height: 100px;
+  height: 90px;
 `;

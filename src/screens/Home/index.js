@@ -6,6 +6,7 @@ import {
   ContainerSearch,
   Input,
   ButtonFilter,
+  ButtonHome,
   ContainerPersonagens,
   ListChars,
   ContainerTextApi,
@@ -18,21 +19,19 @@ export default function Home({ navigation }) {
   const [filter, setFilter] = useState("");
   const [page, setPage] = useState(1);
 
-  const parPage = 5;
-
   useEffect(() => {
     handleCharacters();
   }, []);
 
   async function handleCharacters() {
-    const response = await api.get(`/character/?page=${page}`);
+    const response = await api.get(`character/?page=${page}`);
     setCharacters(response.data.results);
     setPage(page + 1);
   }
 
-  // const filterCharacter = characters.filter((character) => {
-  //   return character.name.toLowerCase().includes(filter.toLowerCase());
-  // });
+  const filterCharacter = characters.filter((character) => {
+    return character.name.toLowerCase().includes(filter.toLowerCase());
+  });
 
   return (
     <ContainerAll>
@@ -42,20 +41,19 @@ export default function Home({ navigation }) {
           value={filter}
           onChangeText={(text) => setFilter(text)}
         />
-        <ButtonFilter onPress={() => {}}>
+        <ButtonFilter onPress={() => {}} >
           <Ionicons name="flask" size={25} />
         </ButtonFilter>
+        
       </ContainerSearch>
 
       <ListChars
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        data={characters}
-        keyExtractor={(characters) => characters.id.toString()}
+        data={filterCharacter}
+        keyExtractor={(characters) => String(characters.id)}
         renderItem={({ item }) => (
-          <ContainerPersonagens
-            onPress={() => navigation.navigate("Detalhes", { id: item.id })}
-          >
+          <ContainerPersonagens onPress={() => navigation.navigate("Detalhes", { id: item.id })}>
             <Photo source={{ uri: item.image }} />
             <ContainerTextApi>
               <TextApi>Nome: {item.name}</TextApi>
