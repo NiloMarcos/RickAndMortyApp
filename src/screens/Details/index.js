@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Ionicons } from "@expo/vector-icons";;
 import api from '../../services/api';
 
-import {ContainerAll, ContainerBack, BackButton, Title, ContainerInfo, Photo, Name, Gender, Status, Species} from './styles';
+import {ContainerAll, ContainerBack, BackButton, Title, ContainerInfo, Photo, Name, Gender, Status, Species, TextRequest} from './styles';
 
 export default function Details({ navigation, route}){
   const { id } = route.params;
@@ -30,10 +30,10 @@ export default function Details({ navigation, route}){
       </ContainerBack>
       <ContainerInfo>
         <Photo source={{ uri: characters.image }} />
-        <Name>{characters.name}</Name>
-        <Status>{characters.status}</Status>
-        <Species>{characters.species}</Species>
-        <Gender>{characters.gender}</Gender>
+        <TextRequest>Nome: {characters.name}</TextRequest>
+        <TextRequest>Status: {characters.status}</TextRequest>
+        <TextRequest>Specie: {characters.species}</TextRequest>
+        <TextRequest>Genero: {characters.gender}</TextRequest>
       </ContainerInfo>
     </ContainerAll>
   );

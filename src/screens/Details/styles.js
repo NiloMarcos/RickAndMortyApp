@@ -26,36 +26,28 @@ export const ContainerInfo = styled.View`
   flex: 1;
   align-items: center;
   background-color: #023047;
+  justify-content: center;
 `;
 
 export const Photo = styled.Image`
   width: 120px;
   height: 120px;
   margin-bottom: 35px;
-  margin-top: 80px;
+  margin-top: 40px;
   border-radius: 7px;
 `;
 
-export const Name = styled.Text`
+export const TextRequest = styled.Text`
   font-size: 18px;
   font-family: 'Poppins_400Regular';
   color: #FFFFFF;
-`;
+  width: 80%;
+  height: 50px;
+  text-align: center;
+  background-color: #c4c4c4;
+  margin: 10px;
+  padding-top: 10px;
 
-export const Gender = styled.Text`
-  font-size: 18px;
-  font-family: 'Poppins_400Regular';
-  color: #FFFFFF;
-`;
-
-export const Status = styled.Text`
-  font-size: 18px;
-  font-family: 'Poppins_400Regular';
-  color: #FFFFFF;
-`;
-
-export const Species = styled.Text`
-  font-size: 18px;
-  font-family: 'Poppins_400Regular';
-  color: #FFFFFF;
+  border-radius: 8px;
+  color: #000;
 `;

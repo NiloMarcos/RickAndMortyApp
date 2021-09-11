@@ -59,6 +59,9 @@ export const ContainerNavigation = styled.View`
   margin-bottom: 5px;
 `;
 
+export const BackScreen = styled.TouchableOpacity``;
+export const NextScreen = styled.TouchableOpacity``;
+
 export const ListChars = styled.FlatList`
   flex: 1;
   margin-right: 10px;
@@ -74,3 +77,9 @@ export const TextApi = styled.Text`
   font-family: Poppins_400Regular;
   color: #FFFFFF;
 `;
+
+export const Photo = styled.Image`
+  width: 100px; 
+  height: 100px;
+`;
+

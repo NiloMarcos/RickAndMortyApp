@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Image, Text, View, ScrollView } from "react-native";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../components/Header";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import api from "../../services/api";
 import {
   ContainerAll,
@@ -11,58 +10,61 @@ import {
   ContainerPersonagens,
   ListChars,
   ContainerTextApi,
-  TextApi
+  TextApi,
+  Photo,
+  ContainerNavigation,
+  BackScreen,
+  NextScreen
 } from "./styles";
 
-// id.toString()
-
-export default function Home({navigation}) {
-  const [ characters, setCharacters ] = useState([]);
-  const [ filter, setFilter ] = useState("");
+export default function Home({ navigation }) {
+  const [characters, setCharacters] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [info, setInfo] = useState([]);
 
   useEffect(() => {
     async function handleCharacters() {
       const response = await api.get(`/character`);
-      // console.log(response.data.results);
-  
       setCharacters(response.data.results);
     }
-
     handleCharacters();
   }, []);
 
-  const filterCharacter = characters.filter((character) => {
-    return character.name.toLowerCase().includes(filter.toLowerCase());
-  });
+  // const filterCharacter = characters.filter((character) => {
+  //   return character.name.toLowerCase().includes(filter.toLowerCase());
+  // });
 
   return (
     <ContainerAll>
       <Header />
 
       <ContainerSearch>
-        <Input placeholder="Filtre por personagem" value={filter} onChangeText={(text) => setFilter(text)} />
-        <ButtonFilter onPress={() => {}}>
+        <Input
+          placeholder="Filtre por personagem"
+          value={filter}
+          onChangeText={(text) => setFilter(text)}
+        />
+        <ButtonFilter onPress={() => { }}>
           <Ionicons name="flask" size={25} />
         </ButtonFilter>
       </ContainerSearch>
 
-      <ListChars 
+      <ListChars
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        data={filterCharacter}
-        keyExtractor={ characters => characters.name }
+        data={characters}
+        keyExtractor={(characters) => characters.id.toString()}
         renderItem={({ item }) => (
-          <ContainerPersonagens onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            <Image source={{ uri: item.image }} style={{ width: 100, height: 100 }} />
+          <ContainerPersonagens onPress={() => navigation.navigate("Detalhes", { id: item.id })}>
+            <Photo source={{ uri: item.image }} />
             <ContainerTextApi>
-              <TextApi>{item.name}</TextApi>
-              <TextApi>{item.status}</TextApi>
-              <TextApi>{item.species}</TextApi>
+              <TextApi>Nome: {item.name}</TextApi>
+              <TextApi>Status: {item.status}</TextApi>
+              <TextApi>Specie: {item.species}</TextApi>
             </ContainerTextApi>
           </ContainerPersonagens>
         )}
       />
-
     </ContainerAll>
   );
 }
