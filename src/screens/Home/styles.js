@@ -9,7 +9,7 @@ export const ContainerSearch = styled.View`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin-top: 35px;
+  margin-top: 15px;
 `;
 
 export const Input = styled.TextInput`

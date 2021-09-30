@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Ionicons } from "@expo/vector-icons";;
 import api from '../../services/api';
 
-import {ContainerAll, ContainerBack, BackButton, Title, ContainerInfo, Photo, Name, Gender, Status, Species, TextRequest} from './styles';
+import {ContainerAll, ContainerBack, BackButton, Title, ContainerInfo, Photo, TextRequest} from './styles';
 
-export default function Details({ navigation, route}){
+export default function Details({ navigation, route }){
   const { id } = route.params;
   
   const [ characters, setCharacters ] = useState([]);
@@ -24,7 +24,7 @@ export default function Details({ navigation, route}){
     <ContainerAll>
       <ContainerBack>
         <BackButton onPress={() => navigation.navigate('Home')}>
-          <Ionicons name="arrow-back-outline" size={30} />
+          <Ionicons name="arrow-back-outline" size={30} color="#FFFFFF" />
         </BackButton>
         <Title>Caracteristicas dos personagens</Title>
       </ContainerBack>

@@ -9,9 +9,11 @@ import {
   ListChars,
 } from "./styles";
 
+import Header from '../../components/Header';
+
 import ListPerso from '../../components/ListPerso';
 
-export default function Home({ navigation }) {
+export default function Home() {
   const [characters, setCharacters] = useState([]);
   const [filter, setFilter] = useState("");
   const [page, setPage] = useState(1);
@@ -32,6 +34,7 @@ export default function Home({ navigation }) {
 
   return (
     <ContainerAll>
+      <Header />
       <ContainerSearch>
         <Input
           placeholder="Filtre por personagem"
