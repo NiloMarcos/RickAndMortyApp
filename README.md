@@ -2,7 +2,7 @@
 
 <!-- Getting Started -->
 
-### In Pudating
+### In Updating
 
 ## INICIANDO O PROJETO
 
