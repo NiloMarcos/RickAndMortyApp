@@ -6,13 +6,10 @@ import {
   ContainerSearch,
   Input,
   ButtonFilter,
-  ButtonHome,
-  ContainerPersonagens,
   ListChars,
-  ContainerTextApi,
-  TextApi,
-  Photo,
 } from "./styles";
+
+import ListPerso from '../../components/ListPerso';
 
 export default function Home({ navigation }) {
   const [characters, setCharacters] = useState([]);
@@ -52,16 +49,7 @@ export default function Home({ navigation }) {
         showsHorizontalScrollIndicator={false}
         data={filterCharacter}
         keyExtractor={(characters) => String(characters.id)}
-        renderItem={({ item }) => (
-          <ContainerPersonagens onPress={() => navigation.navigate("Detalhes", { id: item.id })}>
-            <Photo source={{ uri: item.image }} />
-            <ContainerTextApi>
-              <TextApi>Nome: {item.name}</TextApi>
-              <TextApi>Status: {item.status}</TextApi>
-              <TextApi>Specie: {item.species}</TextApi>
-            </ContainerTextApi>
-          </ContainerPersonagens>
-        )}
+        renderItem={({ item }) => <ListPerso data={item} />}
         onEndReached={handleCharacters}
         onEndReachedThreshold={0.1}
       />

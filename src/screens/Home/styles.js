@@ -35,16 +35,7 @@ export const ButtonFilter = styled.TouchableOpacity`
   border-bottom-right-radius: 8px;
   margin-bottom: 5px;
 `;
-export const ContainerPersonagens = styled.TouchableOpacity`
-  flex: 1;
-  flex-direction: row;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 5px;
-  background-color: #1d3557;
-  width: 100%;
-  height: 100%;
-`;
+
 
 export const ContainerNavigation = styled.View`
   flex-direction: row;
@@ -55,21 +46,5 @@ export const ContainerNavigation = styled.View`
 `;
 
 export const ListChars = styled.FlatList`
-  margin-right: 10px;
-`;
-
-export const ContainerTextApi = styled.View`
-  margin-left: 15px;
-  justify-content: center;
-`;
-
-export const TextApi = styled.Text`
-  font-size: 14px;
-  font-family: 'Poppins_400Regular';
-  color: #FFFFFF;
-`;
-
-export const Photo = styled.Image`
-  width: 100px; 
-  height: 90px;
+  /* margin-right: 10px; */
 `;
