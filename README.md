@@ -2,7 +2,7 @@
 
 <!-- Getting Started -->
 
-### In Updating
+### In Updating - Atualizando App!!!
 
 ## INICIANDO O PROJETO
 
