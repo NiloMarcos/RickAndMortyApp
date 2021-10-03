@@ -2,8 +2,6 @@
 
 <!-- Getting Started -->
 
-### In Updating - Atualizando App!!!
-
 ## INICIANDO O PROJETO
 
 Para instalar o projeto em sua maquina siga os passos abaixo.
