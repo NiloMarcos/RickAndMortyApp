@@ -38,5 +38,4 @@ Para instalar o projeto em sua maquina siga os passos abaixo.
 <div align="center">
    <img src="src/assets/Print 1.png">
    <img src="src/assets/Print 2.png">
-   <img src="src/assets/Print 3.png">
 </div>
